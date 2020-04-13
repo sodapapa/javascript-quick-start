@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+    브라우저 객체
+
+    window
+    window.location
+    window.history
+    window.document
+    <br>
+    <input type="button" name="" value="click" onclick="printRestult();" id="btnPrint" >
+    <br>
+    <span onclick="alert('span')">스팬입니다.</span>
+    <br>
+    <span onclick="printRestult();">스팬입니다2.</span>
+    <br>
+    <script type="text/javascript">
+
+      function printRestult() {
+        var x , y;
+
+        x = prompt("insert x",0);
+        y = prompt("insert y",0);
+
+        // 입력된 값을 문자열로 저장한다.
+
+        x = parseInt(x);
+        y = parseInt(y);
+
+        btnPrint.value = x+y;
+
+        // window.alert(x+y); // window. 은 생략이 가능하다.
+
+      }
+
+      var x , y;
+
+      x = prompt("insert x",0);
+      y = prompt("insert y",0);
+
+      // 입력된 값을 문자열로 저장한다.
+
+      x = parseInt(x);
+      y = parseInt(y);
+
+      window.alert(x+y); // window. 은 생략이 가능하다.
+
+
+
+      // parseInt("string");
+      // return NaN
+
+      // parseInt("123string"); css를 만질 때 유용한 기능
+      // return 123
+
+
+    </script>
+  </body>
+</html>
