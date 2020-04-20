@@ -1,3 +1,15 @@
+//   Ex4 : child nodes를 이용한 노드 선택
+window.addEventListener('load', function(){
+  var section4 = document.querySelector('#section4');
+  var box = section4.querySelector(".box")
+  // var input1 = box.childNodes[0]
+  // var input2 = box.childNodes[1];
+  var input1 = box.children[0];
+  var input2 = box.children[1];
+
+  input1.value = "hi";
+  input2.value = "hi2";
+});
 //  Ex2 : 엘리먼트 선택방법 개선하기
 window.addEventListener('load', function(){
   var section2 = document.getElementById('section2');
