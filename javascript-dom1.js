@@ -1,3 +1,16 @@
+//    ex 5: 엘리먼트 노드의 속성& CSS 속성 변경
+window.addEventListener('load', function(){
+  var section = document.querySelector('#section5');
+  var box = section.querySelector(".box")
+  // var input1 = box.childNodes[0]
+  // var input2 = box.childNodes[1];
+  var input1 = box.children[0];
+  var input2 = box.children[1];
+
+  input1.value = "hi";    
+  input2.value = "hi2";
+});
+
 //   Ex4 : child nodes를 이용한 노드 선택
 window.addEventListener('load', function(){
   var section4 = document.querySelector('#section4');
