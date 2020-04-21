@@ -1,3 +1,134 @@
+//Ex9-다중 노드선택 방법과 일괄삭제, 노드의 자리바꾸기
+window.addEventListener("load", function(){
+
+  var section = document.querySelector("#section9");
+  
+  var noticeList =section.querySelector(".notice-list"); 
+  var tbody = noticeList.querySelector("tbody");
+  var allCheckbox = section.querySelector(".overall-checkbox");
+  var delButton = section.querySelector(".del-button");
+  var swapButton = section.querySelector(".swap-button");
+
+  allCheckbox.onchange = function(){
+
+    var inputs = tbody.querySelectorAll("input[type='checkbox']")
+    
+    for(var i = 0; i < inputs.length; i++){   
+      inputs[i].checked = allCheckbox.checked;
+    }    
+    
+  };
+
+  delButton.onclick = function(){
+    var inputs = tbody.querySelectorAll("input[type='checkbox']:checked")
+
+    for(var i = 0; i < inputs.length; i++)
+      inputs[i].parentElement.parentElement.remove();    
+          
+  };
+
+  swapButton.onclick = function(){
+              
+      
+  };
+
+});
+            
+
+//Ex8-노드 삽입과 바꾸기
+window.addEventListener("load", function(){
+
+  var section = document.querySelector("#section8");
+  
+  var noticeList =section.querySelector(".notice-list"); 
+  var tbodyNode = noticeList.querySelector("tbody");
+  var upButton = section.querySelector(".up-button");
+  var downButton = section.querySelector(".down-button");
+
+  var currentNode = tbodyNode.firstElementChild;//.children[0];
+  
+  downButton.onclick = function(){
+    var nextNode =  currentNode.nextElementSibling;
+    
+    if(nextNode == null ){
+      alert('더이상 이동할 수 없습니다.');
+      return;     
+    }
+
+    // tbodyNode.removeChild(nextNode);    
+    // tbodyNode.insertBefore(nextNode,currentNode);
+    currentNode.insertAdjacentElement("beforebegin",nextNode)
+  };
+
+  upButton.onclick = function(){
+    var prevNode =  currentNode.previousElementSibling;
+    
+    if(prevNode == null ){    
+      alert('더이상 이동할 수 없습니다.');
+      return;     
+    }   
+
+    // tbodyNode.removeChild(currentNode);       
+    // tbodyNode.insertBefore(currentNode, prevNode); 
+    currentNode.insertAdjacentElement("afterend",prevNode);
+  };
+
+});
+
+
+//Ex7 : 노드 복제와 템플릿 태그
+window.addEventListener("load", function(){
+  var notices = [
+      {id:5, title:"퐈이야~~~", regDate:"2019-01-26", writerId:"newlec", hit:0},
+      {id:6, title:"나 좀 복제해줘~", regDate:"2019-01-26", writerId:"newlec", hit:17}
+  ];
+
+  var section = document.querySelector("#section7");
+  
+  var noticeList =section.querySelector(".notice-list"); 
+  var tbodyNode = noticeList.querySelector("tbody");
+  var cloneButton = section.querySelector(".clone-button");
+  var templateButton = section.querySelector(".template-button");
+
+  cloneButton.onclick = function(){
+    var trNode =   noticeList.querySelector('tbody tr');
+    var cloneNode = trNode.cloneNode(true);
+    var tds = cloneNode.querySelectorAll('td');
+    tds[0].textContent = notices[0].id;   
+    tds[1].innerHTML = '<a href ="'+notices[0].id+'">' + notices[0].title + '</a>';
+    tds[2].textContent = notices[0].regDate;
+    tds[3].textContent = notices[0].writerId;
+    tds[4].textContent = notices[0].hit;
+    tbodyNode.append(cloneNode);
+  };
+
+  templateButton.onclick = function(){
+      
+    console.log(notices.length); 
+    
+    var template = section.querySelector('template');
+
+    for (let i = 0; i < notices.length; i++) {
+      var cloneNode = document.importNode(template.content, true);
+      var tds = cloneNode.querySelectorAll('td');
+        //  const element = array[index];
+
+        tds[0].textContent = notices[i].id;   
+        // tds[1].innerHTML = '<a href ="'+notices[0].id+'">' + notices[0].title + '</a>';
+    
+        aNode = tds[1].children[0];   
+        aNode.href = notices[i].id;
+        aNode.textContent = notices[i].title
+        tds[2].textContent = notices[i].regDate;
+        tds[3].textContent = notices[i].writerId;
+        tds[4].textContent = notices[i].hit;
+        tbodyNode.append(cloneNode);
+      }
+  };
+
+});
+
+
 //    ex 5: 엘리먼트 노드의 속성& CSS 속성 변경
 window.addEventListener('load', function(){
   var section = document.querySelector('#section5');
