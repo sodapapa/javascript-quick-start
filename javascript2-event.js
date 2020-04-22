@@ -39,10 +39,12 @@ window.addEventListener("load", function(){
     var section = document.querySelector("#section1-1");
     var buttons = section.querySelectorAll('input[type=button]')
 
-    for(var i = 0; i<buttons.length; i++)              
-    buttons[i].onclick = function(event){
-        event.target.parentElement.parentElement.remove();       
+    for(var i = 0; i<buttons.length; i++){
+
+        buttons[i].onclick = function(event){
+            event.target.parentElement.parentElement.remove();       
         }          
+    }            
 
 }); 
 
@@ -56,10 +58,12 @@ window.addEventListener("load", function(){
     var imgs = section.querySelectorAll(".img");
     var currentImg = section.querySelector(".current-img");
     
-    for(var i = 0; i<imgs.length; i++)              
+    for(var i = 0; i<imgs.length; i++){
+
         imgs[i].onclick = function(event){
             currentImg.src=event.target.src;       
 
         }
+    }              
         
 }); 
