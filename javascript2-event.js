@@ -1,4 +1,72 @@
+window.addEventListener("load", function(){
+    var section = document.querySelector("#section6");
+    var box = section.querySelector(".box");
+    var container = section.querySelector(".container");
+
+    container.onclick = function(e){
+       console.log("e.x, e.y "+ e.x +  ","+ e.y);
+
+       box.style.position = "absolute";
+       box.style.left = e.x+"px";
+       box.style.top = e.y+"px"; 
+                        
+    };      
+});     
+
+
+window.addEventListener("load", function(){
+    var section = document.querySelector("#section5");
+    var fileButton = section.querySelector(".file-button");
+    var fileTriggerButton = section.querySelector(".file-trigger-button");
+
+    fileTriggerButton.onclick = function(){
+
+        var event = new MouseEvent("click",{    
+            'view' : window,
+            'bubbles' : true,
+            'cancelable' : true
+        });
+        fileButton.dispatchEvent(event)
+    };
+});     
+
+
+
 // Ex3-이벤트 버블링 멈추기
+// 같은 부모를 공유하지만 다른 이벤트를 수행해야하는 경우에 어떻게 이벤트를 막을 것인가.
+
+window.addEventListener("load", function(){
+
+    var section = document.querySelector("#section3");
+    
+    var imgList = section.querySelector(".img-list"); 
+    var addButton = section.querySelector(".add-button");
+    var currentImg = section.querySelector(".current-img");
+    
+    var tbody = section.querySelector('.notice-list tbody');
+        
+    tbody.onclick = function(e){
+        console.log(e.target.nodeName);
+        if(e.target.nodeName != "INPUT") return;
+
+        var target = e.target;
+        if(target.classList.contains("sel-button")){
+            var tr = target.parentElement;
+
+            for(; tr.nodeName != "TR"; tr= tr.parentElement)
+
+            tr.style.background = "blue"; 
+        }
+    }
+
+
+}); 
+
+
+
+// Ex3-이벤트 버블링 멈추기
+// 같은 부모를 공유하지만 다른 이벤트를 수행해야하는 경우에 어떻게 이벤트를 막을 것인가.
+
 window.addEventListener("load", function(){
 
     var section = document.querySelector("#section3");
@@ -8,11 +76,19 @@ window.addEventListener("load", function(){
     var currentImg = section.querySelector(".current-img");
     
     imgList.onclick = function(e){
-        
+        console.log('imgList.onclick');  
+        if(e.target.nodeName != "IMG")  return
+
+        currentImg.src = e.target.src;
     };
 
-    addButton.onclick = function(e){
-        
+    addButton.onclick = function(e){        
+        e.stopPropagation(); 
+        console.log('addButton.onclick');
+        var img = document.createElement('img');
+        img.src = "images/img1.jpg";
+        currentImg.insertAdjacentElement("afterend", img);
+    
     };
 
 }); 
@@ -29,7 +105,10 @@ window.addEventListener("load", function(){
     var currentImg = section.querySelector(".current-img");
     
     imgList.onclick = function(e){
-        
+      console.log(e.target.nodeName);  
+      if(e.target.nodeName != "IMG")  return
+
+      currentImg.src = e.target.src;
     };
 }); 
 
@@ -38,13 +117,22 @@ window.addEventListener("load", function(){
 window.addEventListener("load", function(){
     var section = document.querySelector("#section1-1");
     var buttons = section.querySelectorAll('input[type=button]')
+    var tbody = section.querySelector('tbody');
 
-    for(var i = 0; i<buttons.length; i++){
+    tbody.onclick = function(e){
+        console.log(e.target.nodeName);
+        if(e.target.nodeName != "INPUT") return;
 
-        buttons[i].onclick = function(event){
-            event.target.parentElement.parentElement.remove();       
-        }          
-    }            
+        e.target.parentElement.parentElement.remove();       
+
+    }
+
+    // for(var i = 0; i<buttons.length; i++){
+
+    //     buttons[i].onclick = function(event){
+    //         event.target.parentElement.parentElement.remove();       
+    //     }          
+    // }            
 
 }); 
 
