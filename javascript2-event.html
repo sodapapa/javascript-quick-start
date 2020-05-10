@@ -15,7 +15,34 @@
     </nav>
     <hr />
     <!-- 예제 본문 -->
-    
+    <section id="section10">
+        <style>     
+            .container{
+                width: 800px;
+                height: 400px;
+                border: 1px solid;
+                position: relative;
+                overflow: hidden;
+            }       
+            .box{
+                width: 100px;
+                height: 100px;
+                background-color: chocolate;  
+                position: absolute;  
+            }
+        </style>
+
+        <h1>마우스 좌표</h1>
+        <div class="container">
+
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box" draggable="true"></div>
+        </div>
+
+        <div class="status"></div>
+    </section>
+    <hr />
     
     <section id="section9">
         <style>
@@ -24,6 +51,7 @@
                 height: 400px;
                 border: 1px solid;
                 position: relative;
+                overflow: hidden;
             }       
             .box{
                 width: 100px;

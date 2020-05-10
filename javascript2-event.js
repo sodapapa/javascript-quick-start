@@ -8,7 +8,25 @@ window.addEventListener("load", function(){
     var current = null;
     var left = container.offsetLeft;
     var top = container.offsetTop;
-    container.onmousedown = function(e){
+    section.onmousedown = function(e){
+        if(e.target.classList.contains("box")){
+            dragging = true;
+            current = e.target;    
+            offset.x = e.offsetX;       
+            offset.y = e.offsetY;           
+
+        }                
+    }; 
+window.addEventListener("load", function(){
+    var section = document.querySelector("#section9");
+    var status = section.querySelector(".status");
+    var container = section.querySelector(".container");
+    var dragging = false;
+    var offset = {x:0, y:0};
+    var current = null;
+    var left = container.offsetLeft;
+    var top = container.offsetTop;
+    section.onmousedown = function(e){
         if(e.target.classList.contains("box")){
             dragging = true;
             current = e.target;    
@@ -17,12 +35,12 @@ window.addEventListener("load", function(){
 
         }                
     };      
-    container.onmouseup = function(e){      
+    section.onmouseup = function(e){      
         dragging = false;
                          
      };    
 
-    container.onmousemove = function(e){
+     section.onmousemove = function(e){
         if(!dragging) return;
         dragging = true;                    
 
@@ -34,7 +52,7 @@ window.addEventListener("load", function(){
         status.innerText = "(x , y) " + x +", " + y;
      };         
 
- 
+
 });
 
 window.addEventListener("load", function(){
