@@ -5,8 +5,7 @@ const form = document.querySelector('.js-form'),
 const USER_LS = "currentUser";
 const SHOWING_CN = "showing";
 
-
-
+       
 function saveName(text){
     localStorage.setItem(USER_LS,text);     
 }
@@ -21,7 +20,7 @@ function handelSubmit(event){
 function askForName(){
     form.classList.add(SHOWING_CN);
     form.addEventListener("submit", handelSubmit);
-}
+}       
 
 
 function paintGreeting(text){

@@ -3,7 +3,6 @@ const clockContainer = document.querySelector('.js-clock'),
  
 
 function getTime(){
-    console.log('1초');
  const date = new Date();
  const hours = date.getHours();
  const minutes = date.getMinutes();         
