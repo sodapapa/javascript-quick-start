@@ -19,7 +19,7 @@ function getWeather(lat,lon){
 }
 
 
-function saveCoords(coordsObj){     
+function saveCoords(coordsObj){         
     localStorage.setItem(COORDS,JSON.stringify(coordsObj));
 }
 
