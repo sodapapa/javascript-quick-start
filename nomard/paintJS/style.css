@@ -9,8 +9,8 @@ body {
   padding: 50px 0px;
 }
 
-.canvas {
-  width: 400px;
+.canvas {   
+  width: 400px;   
   height: 400px;
   background-color: white;
   border-radius: 15px;
