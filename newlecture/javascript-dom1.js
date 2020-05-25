@@ -13,7 +13,7 @@ window.addEventListener("load", function(){
   var noticeList =section.querySelector(".notice-list");
   var titldTd = section.querySelector(".title");
   var tbodyNode = noticeList.querySelector("tbody");
-
+dysdfkjhehdhdshsduiheisididi
   var bindData = function(){
       var template = section.querySelector("template");
 
